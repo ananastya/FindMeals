@@ -1,0 +1,39 @@
+<html>
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>-->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.js"></script>
+    <script src="controller.js"></script>
+</head>
+<body ng-app="app">
+    <div class="tabbable" ng-controller="tabsCtrl as tabs"> <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs">
+        <li ng-repeat="item in tabs.tabs" ng-class="{active : $index==tabs.activeTab}"><a ng-click="tabs.activeTab=$index">{{item.name}}</a></li>
+        <!--<li class="active"><a href="#tab1" data-toggle="tab">Вкладка 1</a></li>-->
+        <!--<li><a href="#tab2" data-toggle="tab">Вкладка 2</a></li>-->
+    </ul>
+    <div class="tab-content">
+        <div class="active">
+            <div class="order-item" ng-repeat="item in tabs.tabs[tabs.activeTab].items" ng-init="index=$index">
+                <div>Номер заказа: {{item.id}} <br> Адрес: {{item.address}} <br> Телефон: {{item.phone}}</div>
+                <div class="btn-group">
+                    <button ng-repeat="tabItem in tabs.tabs" type="button" class="btn btn-default" ng-show="$index!=tabs.activeTab" ng-click="tabs.moveItem(index, $index)">
+                        {{tabItem.name}}
+                    </button>
+                </div>
+            </div>
+            <button class="btn btn-success">Загрузить еще</button>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
