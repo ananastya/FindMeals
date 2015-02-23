@@ -8,6 +8,9 @@
   border: 1px solid #ddd;
   border-top: none;
 }
-.tabbable .tab-content .btn {
+.tabbable .tab-content .order-item .btn {
   border-radius: 0;
+}
+.tabbable .tab-content .btn-success {
+  margin: 10px;
 }
